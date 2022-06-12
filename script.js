@@ -1,11 +1,13 @@
 
 const API_KEY = "86aa43d0875407669a8288550d29f299";
 
-const moviesOnDisplay = document.querySelector("#movies-grid");
-const loadMoreButton = document.querySelector("#load-more-movies-btn");
-const form = document.querySelector("#form");
-const closeSearchButton = document.querySelector("#close-search-btn");
+var moviesOnDisplay = document.querySelector("#movies-grid");
+var loadMoreButton = document.querySelector("#load-more-movies-btn");
+var form = document.querySelector("#form");
+var closeSearchButton = document.querySelector("#close-search-btn");
 var searchBar = document.querySelector("#search-input")
+var searchResultsText = document.querySelector("#search-results-text");
+var toTopButton = document.querySelector("#to-top-button");
 
 // VARS FOR BUILDING API CALLS
 var poster_size = 'original';
@@ -27,6 +29,7 @@ window.addEventListener("load", getMovies)
 loadMoreButton.addEventListener("click", loadMoreMovies)
 form.addEventListener("submit", userSearch)
 closeSearchButton.addEventListener("click", closeSearch)
+toTopButton.addEventListener("click", scrollToTop)
 
 async function getMovies() {
     let searchMovies = `${searchMoviesURL}&query=${query}&page=${page}`;
@@ -38,6 +41,8 @@ async function getMovies() {
         var response = await fetch(nowPlaying);
     } else {
         var response = await fetch(searchMovies);
+        searchResultsText.removeAttribute("hidden");
+        closeSearchButton.removeAttribute("hidden");
     }
     let responseObj = await response.json();
     //console.log(responseObj);
@@ -55,7 +60,8 @@ function displayMovies(responseObj) {
         <div class="movie-votes">${e.vote_average}</div>
         </div>`
     });
-
+    loadMoreButton.removeAttribute("hidden");
+    toTopButton.removeAttribute("hidden");
     //responseObj.results.forEach(function(e, index, ) {
         
     //})
@@ -73,6 +79,8 @@ function userSearch(evt) {
     query = searchBar.value;
     moviesOnDisplay.innerHTML = ``;
     console.log(query)
+    loadMoreButton.setAttribute("hidden", true);
+    toTopButton.setAttribute("hidden", true);
     getMovies();
 }
 
@@ -82,5 +90,13 @@ function closeSearch(evt) {
     page = 1;
     moviesOnDisplay.innerHTML = ``;
     console.log(query)
+    searchResultsText.setAttribute("hidden", true);
+    closeSearchButton.setAttribute("hidden", true);
+    loadMoreButton.setAttribute("hidden", true);
+    toTopButton.setAttribute("hidden", true);
     getMovies();
+}
+
+function scrollToTop(evt) {
+    window.scrollTo(0, 0);
 }

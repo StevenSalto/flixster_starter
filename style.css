@@ -6,7 +6,7 @@ body {
 
 /*body -> header*/
 #header {
-    background-color: #345426;
+    background-color: #4a7439;
     color: white;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -69,7 +69,7 @@ body {
 }
 #welcome-message {
     font-family: 'Joan', serif;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 #search-wrapper {
     position: relative;
@@ -82,6 +82,9 @@ body {
     width: 100%;
     font-size: 1rem;
 }
+#search-input:focus {
+    outline: none;
+  }
 .button {
     color: white;
     font-family: 'Ubuntu', sans-serif;
@@ -103,7 +106,7 @@ body {
 #movies-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    padding: 10px 10vw;
+    padding: 20px 10vw 10px;
     font-family: 'Ubuntu', sans-serif;
 }
 .movie-card {
@@ -117,20 +120,54 @@ body {
     box-shadow: 0px 0px 10px grey;
 }
 .movie-title {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     font-weight: bolder;
     padding: 20px 0px 5px;
 }
 .movie-votes {
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: bold;
     color: grey;
 }
 
 
+
+
+#search-results-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 30px 10vw 0px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bolder;
+    font-size: 2.5vw;
+}
+#search-results-text {
+    color: transparent;
+    background-image: linear-gradient(to right, #32abde, #73ae38);
+    background-clip: text;
+    -webkit-background-clip: text;
+    justify-self: start;
+    padding: 10px 10px;
+}
+#close-search-btn{
+    justify-self: end;
+}
+
+
 #load-more-movies-btn-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 10px 10vw 50px;
 }
 #load-more-movies-btn {
-    float: right;
+    justify-self: start;
+}
+#to-top-button {
+    justify-self: end;
+    padding: 8.5px 15px;
+}
+html {
+    scroll-behavior: smooth;
 }
