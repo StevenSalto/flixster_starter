@@ -5,7 +5,7 @@ const moviesOnDisplay = document.querySelector("#movies-grid");
 const loadMoreButton = document.querySelector("#loadMore");
 const form = document.querySelector("#form");
 
-var searchBar = document.querySelector("#searchBar")
+var searchBar = document.querySelector("#search-bar")
 
 // VARS FOR BUILDING API CALLS
 var poster_size = 'original';
@@ -46,7 +46,13 @@ async function getMovies() {
 
 function displayMovies(responseObj) {
     //console.log("displayMovies: ")
-    responseObj.results.forEach((e) => {moviesOnDisplay.innerHTML += `<div class="movie-card"><img src="${posterURL}${e.poster_path}"> <br> ${e.vote_average} <br>${e.title}</div>`});
+    responseObj.results.forEach((e) => {moviesOnDisplay.innerHTML += 
+        `<div class="movie-card">
+        <img class="movie-poster" src="${posterURL}${e.poster_path}">
+        <div class="movie-title">${e.title}</div>
+        <div class="movie-rating">${e.vote_average}</div>
+        </div>`
+    });
 
     //responseObj.results.forEach(function(e, index, ) {
         

@@ -1,25 +1,20 @@
 body {
     background-color: white;
-    font-family: 'Joan', serif;
     margin: 0px;
 }
-img {
-    border-radius: 25px;
-    max-width: 100%;
-}
 
-#movies-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-#intro {
-    display: grid;
-    min-height: 300px;
-    padding-bottom: 40px;
-    background-image: linear-gradient(to right,rgb(85, 157, 57), #a0c57b18), url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/7VrRna8S3x6xbijooeBmxqvHXiu.jpg");
-    background-size: cover;
-}
 
+/*body -> header*/
+#header {
+    background-color: #345426;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+    padding-left: 10px;
+    padding: 0px 40px;
+}
+/*header -> logo*/
 #logo {
     height: 64px;
     width: 100%;
@@ -34,7 +29,7 @@ img {
     font-weight: 600;
     font-size: 2.25rem;
 }
-
+/*header -> navigation*/
 #navigation {
     display: flex;
     align-items: center;
@@ -52,26 +47,90 @@ img {
     padding: 0px 10px;
 }
 
-.movie-card {
-    background-color: #C0DFA1;
-    padding: 15px;
+
+/* body -> main*/
+#main {
+    display: flex;
+    flex-direction: column;
+}
+/* main -> section*/
+#section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+    max-height: 360px;
+    padding-bottom: 40px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    background-image: linear-gradient(to right,#4f9135, #a0c57b18), url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/7VrRna8S3x6xbijooeBmxqvHXiu.jpg");
+    background-size: cover;
+    color: white;
+}
+#welcome-message {
+    font-family: 'Joan', serif;
+    font-size: 3rem;
+}
+#search-wrapper {
+    position: relative;
+}
+#search-bar {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 0px;
+    border-radius: 30px;
+    width: 100%;
     font-size: 1rem;
 }
-#header {
-    background-color: #263e1c;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: 16px;
-    padding-left: 10px;
-    padding: 0px 40px;
-}
 .button {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    background-color: paleturquoise;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 26px;
+    border: 0px;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #52beec, #b4e187);
+    box-shadow: 0px 0px 10px grey;
+}
+#submit{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
 }
 
-#main {
 
+#movies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px 10vw;
+    font-family: 'Ubuntu', sans-serif;
+}
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.movie-poster {
+    border-radius: 25px;
+    max-width: 100%;
+    box-shadow: 0px 0px 10px grey;
+}
+.movie-title {
+    font-size: 1.3vw;
+    font-weight: bolder;
+    padding: 20px 0px 5px;
+}
+.movie-rating {
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: grey;
+}
+
+
+#load-more-wrapper {
+    padding: 10px 10vw 50px;
+}
+#loadMore {
+    float: right;
 }
