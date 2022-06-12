@@ -1,14 +1,14 @@
 
 const API_KEY = "86aa43d0875407669a8288550d29f299";
 
-const moviesOnDisplay = document.querySelector("#movies");
+const moviesOnDisplay = document.querySelector("#movies-grid");
 const loadMoreButton = document.querySelector("#loadMore");
 const form = document.querySelector("#form");
 
 var searchBar = document.querySelector("#searchBar")
 
 // VARS FOR BUILDING API CALLS
-var poster_size = 'w500';
+var poster_size = 'original';
 var page = 1;
 var query = '';
 // URLS
@@ -28,39 +28,42 @@ loadMoreButton.addEventListener("click", loadMoreMovies)
 form.addEventListener("submit", userSearch)
 
 async function getMovies() {
-    searchMoviesURL += `&query=${query}`;
+    let searchMovies = `${searchMoviesURL}&query=${query}&page=${page}`;
+    let nowPlaying = `${nowPlayingMoviesURL}&page=${page}`;
     console.log("in getMovies function: ")
-    console.log(API_KEY)
     console.log(query)
-    console.log(searchMoviesURL)
+    console.log(searchMovies)
     if(query == '') {
-        var response = await fetch(nowPlayingMoviesURL);
+        var response = await fetch(nowPlaying);
     } else {
-        var response = await fetch(searchMoviesURL);
+        var response = await fetch(searchMovies);
     }
     let responseObj = await response.json();
     //console.log(responseObj);
     //console.log(await (await fetch(test_path)).json());
-    moviesOnDisplay.innerHTML = ``;
     displayMovies(responseObj);
 }
 
-function displayMovies(responseObj){
+function displayMovies(responseObj) {
     //console.log("displayMovies: ")
-    responseObj.results.forEach((e) => {moviesOnDisplay.innerHTML += `<div><img src="${posterURL}${e.poster_path}"> <br> ${e.vote_average} <br>${e.title}</div>`});
+    responseObj.results.forEach((e) => {moviesOnDisplay.innerHTML += `<div class="movie-card"><img src="${posterURL}${e.poster_path}"> <br> ${e.vote_average} <br>${e.title}</div>`});
+
+    //responseObj.results.forEach(function(e, index, ) {
+        
+    //})
 }
 
 async function loadMoreMovies() {
     page += 1;
-    let response = await fetch(searchMoviesURL+`&page=${page}`);
-    let responseObj = await response.json();
-    displayMovies(responseObj);
+    getMovies();
 }
 
 function userSearch(evt) {
     evt.preventDefault();
     console.log("in usersearch function: ")
+    page = 1;
     query = searchBar.value;
+    moviesOnDisplay.innerHTML = ``;
     console.log(query)
     getMovies();
 }

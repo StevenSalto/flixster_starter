@@ -2,21 +2,47 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logos/popcorn_icon.png">
-    <title>FLIXSTER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Joan&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="logos/filming-reel-logo.png">
+    <title>Flixster</title>
 </head>
 <body>
-    <h1 id="title"><img src="logos/popcorn_icon.png">FLIXSTER</h1>
-    <h2 id="heading">NOW PLAYING:</h2>
-    <form id="form">
-        <label for="searchBar">Search for specific movies: </label>
-        <input type="text" id="searchBar" name="searchBar">
-        <input type="submit" value="Submit">
-    </form>
-    <div id="movies">
-    </div>
+    <header id="header">
+        <div id="logo"><img id="logo-image" src="logos/filming-reel-logo.png"><span id="logo-text">Flixster</span></div>
+        <div id="navigation">
+            <ul id="nav-list">
+                <li class="nav-list-elem">Movies</li>
+                <li class="nav-list-elem">TV Shows</li>
+                <li class="nav-list-elem">Community</li>
+                <li class="nav-list-elem">Support</li>
+            </ul>
+        </div>
+    </header>
+    <main id="main">
+        <section id="intro">
+            <div id="welcome-message">
+                <h1>Welcome.</h1>
+            </div>
+            <div id="searchWrapper">
+                <form id="form" autocomplete="off">
+                    <label for="searchBar">Search for specific movies: </label>
+                    <input type="text" id="searchBar" name="searchBar">
+                    <input class="button" type="submit" value="Submit">
+                </form>
+            </div>
+        </section>
 
-    <button id="loadMore">Load More!</button>
+        <div id="movies-grid">
+        </div>
+
+        <button class="button" id="loadMore">Load More!</button>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
