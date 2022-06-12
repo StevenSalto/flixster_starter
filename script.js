@@ -4,7 +4,7 @@ const API_KEY = "86aa43d0875407669a8288550d29f299";
 const moviesOnDisplay = document.querySelector("#movies-grid");
 const loadMoreButton = document.querySelector("#load-more-movies-btn");
 const form = document.querySelector("#form");
-
+const closeSearchButton = document.querySelector("#close-search-btn");
 var searchBar = document.querySelector("#search-input")
 
 // VARS FOR BUILDING API CALLS
@@ -26,6 +26,7 @@ var searchMoviesURL = `https://api.themoviedb.org/3/search/movie?api_key=${API_K
 window.addEventListener("load", getMovies)
 loadMoreButton.addEventListener("click", loadMoreMovies)
 form.addEventListener("submit", userSearch)
+closeSearchButton.addEventListener("click", closeSearch)
 
 async function getMovies() {
     let searchMovies = `${searchMoviesURL}&query=${query}&page=${page}`;
@@ -41,6 +42,7 @@ async function getMovies() {
     let responseObj = await response.json();
     //console.log(responseObj);
     //console.log(await (await fetch(test_path)).json());
+    searchBar.value = '';
     displayMovies(responseObj);
 }
 
@@ -69,6 +71,15 @@ function userSearch(evt) {
     console.log("in usersearch function: ")
     page = 1;
     query = searchBar.value;
+    moviesOnDisplay.innerHTML = ``;
+    console.log(query)
+    getMovies();
+}
+
+function closeSearch(evt) {
+    evt.preventDefault();
+    query = '';
+    page = 1;
     moviesOnDisplay.innerHTML = ``;
     console.log(query)
     getMovies();
