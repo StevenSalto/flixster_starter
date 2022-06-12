@@ -74,7 +74,7 @@ body {
 #search-wrapper {
     position: relative;
 }
-#search-bar {
+#search-input {
     box-sizing: border-box;
     padding: 10px 20px;
     border: 0px;
@@ -121,16 +121,16 @@ body {
     font-weight: bolder;
     padding: 20px 0px 5px;
 }
-.movie-rating {
+.movie-votes {
     font-size: 1.2vw;
     font-weight: bold;
     color: grey;
 }
 
 
-#load-more-wrapper {
+#load-more-movies-btn-wrapper {
     padding: 10px 10vw 50px;
 }
-#loadMore {
+#load-more-movies-btn {
     float: right;
 }

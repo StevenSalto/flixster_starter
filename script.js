@@ -2,10 +2,10 @@
 const API_KEY = "86aa43d0875407669a8288550d29f299";
 
 const moviesOnDisplay = document.querySelector("#movies-grid");
-const loadMoreButton = document.querySelector("#loadMore");
+const loadMoreButton = document.querySelector("#load-more-movies-btn");
 const form = document.querySelector("#form");
 
-var searchBar = document.querySelector("#search-bar")
+var searchBar = document.querySelector("#search-input")
 
 // VARS FOR BUILDING API CALLS
 var poster_size = 'original';
@@ -50,7 +50,7 @@ function displayMovies(responseObj) {
         `<div class="movie-card">
         <img class="movie-poster" src="${posterURL}${e.poster_path}">
         <div class="movie-title">${e.title}</div>
-        <div class="movie-rating">${e.vote_average}</div>
+        <div class="movie-votes">${e.vote_average}</div>
         </div>`
     });
 
